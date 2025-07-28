@@ -18,8 +18,8 @@ jobs:
           
       - name: Deploy with rsync
         run: |
-          ssh -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo 'connection enabled'"
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo 'connection enabled'" << 'EOF'
           whoami
           pwd
           ls -la
-
+          EOF

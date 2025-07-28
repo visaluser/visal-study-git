@@ -18,5 +18,8 @@ jobs:
           
       - name: Deploy with rsync
         run: |
-          rsync -avz -e "ssh -i ~/.ssh/id_rsa" ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}
+          rsync -avz -e "ssh -i ~/.ssh/id_rsa" \
+           --rsync-path="sudo rsync" \
+           ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}
+
 

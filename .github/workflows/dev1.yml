@@ -18,7 +18,5 @@ jobs:
           
       - name: Deploy with rsync
         run: |
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
-          cd ${{secrets.WORK_DIR}}
-          ls -la
-          EOF
+          rsync -avz -e "ssh -i ~/.ssh/id_rsa" ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_DIR }}
+

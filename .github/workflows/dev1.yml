@@ -21,4 +21,5 @@ jobs:
           ssh -i ~/.ssh/id_rsa ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "echo 'connection enabled'"
           whoami
           pwd
+          ls -la
 
